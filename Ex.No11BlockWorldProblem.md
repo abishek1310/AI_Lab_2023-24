@@ -47,23 +47,26 @@ Step 10 : Obtain the plan for given problem.<br>
 ```
 
 ### Input 
+```
 (define (problem pb1)
 (:domain blocksworld)
 (:objects a b)
 (:init (on-table a) (on-table b) (clear a) (clear b) (arm-empty))
 (:goal (and (on a b))))
+```
 
 ### Output/Plan:
 ![image](https://github.com/abishek1310/AI_Lab_2023-24/assets/159773374/083fcfdc-dd38-4943-9fef-07df90d7ef01)
 
 ### Input 2
+```
 (define(problem pb3)
 (:domain blocksworld)
 (:objects a b c)
 (:init (on-table a) (on-table b) (on-table c)
 (clear a) (clear b) (clear c) (arm-empty))
 (:goal (and (on a b) (on b c))))
-
+```
 ### Output
 ![image](https://github.com/abishek1310/AI_Lab_2023-24/assets/159773374/a1e234d8-8fdb-46be-8b84-4b781c51399b)
 
