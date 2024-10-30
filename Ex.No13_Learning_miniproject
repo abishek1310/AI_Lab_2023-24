@@ -6,7 +6,7 @@ To write a program to train the classifier for -----------------.
 ###  Algorithm:
 
 ### Program:
-```
+```py 
 import numpy as np
 import pandas as pd
 import gradio as gr
@@ -44,20 +44,5 @@ def diabetes(Pregnancies, Glucose, Blood_Pressure, SkinThickness, Insulin, BMI, 
 print(diabetes(2, 148, 72, 35, 0, 33.6, 0.627, 50))
 
 ```
-### Output:
-1.Dataset
-
-![WhatsApp Image 2024-04-25 at 09 23 58_77b41ef5](https://github.com/kannan0071/AI_Lab_2023-24/assets/119641638/902fe083-c720-44c7-9118-d38f78aed76e)
-
-2.Accuracy
-
-![WhatsApp Image 2024-04-25 at 09 24 12_1d8641b3](https://github.com/kannan0071/AI_Lab_2023-24/assets/119641638/c3831e9b-d4ff-4f4a-877c-df8603faed09)
-
-3.Result
-
-![WhatsApp Image 2024-04-25 at 09 23 34_e1841a5d](https://github.com/kannan0071/AI_Lab_2023-24/assets/119641638/d376bb90-777a-4780-87e7-51168b7111a2)
-
-
-
 ### Result:
 Thus the system was trained successfully and the prediction was carried out.
