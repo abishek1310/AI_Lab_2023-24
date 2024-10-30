@@ -6,75 +6,43 @@ To write a program to train the classifier for -----------------.
 ###  Algorithm:
 
 ### Program:
-```py
- 
-import
-numpy
-as
-np
-import
-pandas
-as
-pdpip install gradiopip install typing-extensions --upgradepip install --upgrade typing
-import
-gradio
-as
-gr
-import
-pandas
-as
-pd
-data = pd.read_csv(
-'diabetes.csv'
-)data.head()
-x = data.drop([
-'Outcome'
-], axis=
-1
-)y = data[
-'Outcome'
-]
-print(x[:
-5
-])
-from
-sklearn.model_selection
-import
-train_test_splitx_train, x_test, y_train, y_test= train_test_split(x,y)
-from
-sklearn.preprocessing
-import
-StandardScalerscaler = StandardScaler()x_train_scaled = scaler.fit_transform(x_train)x_test_scaled = scaler.fit_transform(x_test)
-from
-sklearn.neural_network
-import
-MLPClassifiermodel = MLPClassifier(max_iter=
-1000
-, alpha=
-1
-)model.fit(x_train, y_train)print(
-"Model Accuracy on training set:"
-, model.score(x_train, y_train))print(
-"Model Accuracy on Test Set:"
-, model.score(x_test, y_test))print(data.columns)
-def
-diabetes
-(Pregnancies, Glucose, Blood_Pressure, SkinThickness, Insulin, BMI,Diabetes_Pedigre
-x = np.array([Pregnancies,Glucose,Blood_Pressure,SkinThickness,Insulin,BMI,Diabetes_Pedigre prediction = model.predict(x.reshape(
-1
-,
--1
-))
-if
-(prediction==
-0
-):
-return
-"NO"
-else
-:
-return
-"YES"
+```
+import numpy as np
+import pandas as pd
+import gradio as gr
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neural_network import MLPClassifier
+
+data = pd.read_csv('/content/diabetes.csv')
+data.head()
+
+x = data.drop(['Outcome'], axis=1)
+y = data['Outcome']
+print(x[:5])
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+x_train_scaled = scaler.fit_transform(x_train)
+x_test_scaled = scaler.transform(x_test)
+
+model = MLPClassifier(max_iter=1000, alpha=1)
+model.fit(x_train_scaled, y_train)
+print("Model Accuracy on training set:", model.score(x_train_scaled, y_train))
+print("Model Accuracy on test set:", model.score(x_test_scaled, y_test))
+
+def diabetes(Pregnancies, Glucose, Blood_Pressure, SkinThickness, Insulin, BMI, Diabetes_Pedigree_Function, Age):
+    x = np.array([Pregnancies, Glucose, Blood_Pressure, SkinThickness, Insulin, BMI, Diabetes_Pedigree_Function, Age])
+    x = scaler.transform(x.reshape(1, -1))  # Scale input data
+    prediction = model.predict(x)
+    if prediction == 0:
+        return "NO"
+    else:
+        return "YES"
+
+print(diabetes(2, 148, 72, 35, 0, 33.6, 0.627, 50))
+
 ```
 ### Output:
 1.Dataset
